@@ -14,7 +14,7 @@ jobs:
       - name: Update repositories and install essentials
         run: |
           pacman -Syyu --noconfirm
-          pacman -S git basedevel
+          pacman -S git base-devel
       - name: UntitledI18N
         run: |
           cd untitled-i18n/ || exit
