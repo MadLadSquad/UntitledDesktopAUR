@@ -18,7 +18,7 @@ compile_file() {
 	makepkg -si --noconfirm || exit
 	makepkg --printsrcinfo > .SRCINFO || exit
 
-	if [ "$2" == "deploy" ];
+	if [ "$2" == "deploy" ]; then
 		git init
 		git remote add origin ssh://aur@aur.archlinux.org/"$1"
 		git fetch origin
