@@ -14,7 +14,7 @@ jobs:
       - name: Update repositories and install essentials
         run: |
           pacman -Syyu --noconfirm
-          pacman -S --noconfirm git base-devel sudo
+          pacman -S --noconfirm git base-devel sudo xorg-xrandr
 
           useradd -m builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
