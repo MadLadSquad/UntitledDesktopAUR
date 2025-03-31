@@ -31,6 +31,6 @@ jobs:
           
           sudo -E -u builder env HOME=/home/builder mkdir -p /home/builder/.ssh
           sudo -E -u builder env HOME=/home/builder ssh-keyscan -H aur.archlinux.org >> /home/builder/.ssh/known_hosts
-          sudo -E -u builder env HOME=/home/builder chmod -R 600 /home/builder/.ssh/*
+# sudo -E -u builder env HOME=/home/builder chmod -R 600 /home/builder/.ssh/*
       - name: Compile
-        run: sudo -E -u builder bash -c "HOME=/home/builder ./run.sh deploy"
+        run: sudo -E -u builder env HOME=/home/builder ./run.sh deploy
