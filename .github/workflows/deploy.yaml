@@ -28,6 +28,9 @@ jobs:
           sudo -E -u builder env HOME=/home/builder git config --global user.name "Madman10K"
           sudo -E -u builder env HOME=/home/builder git config --global user.email "contact@madladsquad.com"
           sudo -E -u builder env HOME=/home/builder git config --global init.defaultBranch main
+
+          sudo chown builder:builder $SSH_AUTH_SOCK
+          sudo chmod 600 $SSH_AUTH_SOCK
           
           sudo -E -u builder env HOME=/home/builder mkdir -p /home/builder/.ssh
           sudo -E -u builder env HOME=/home/builder ssh-keyscan -H aur.archlinux.org >> /home/builder/.ssh/known_hosts
