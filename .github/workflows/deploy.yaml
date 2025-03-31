@@ -22,6 +22,10 @@ jobs:
           chown -R builder $(pwd)
       - name: Configure git
         run: |
+          sudo -E -u builder env HOME=/home/builder git config --global user.name Madman10K
+          sudo -E -u builder env HOME=/home/builder git config --global user.email contact@madladsquad.com
+          sudo -E -u builder env HOME=/home/builder git config --global init.defaultBranch main
+          
           sudo -E -u builder mkdir -p /home/builder/.ssh
           echo "${{ secrets.ACTIONS_AUR_SSH_KEY }}" | sudo -E -u builder tee /home/builder/.ssh/id_rsa > /dev/null
           sudo -E -u builder chmod 600 /home/builder/.ssh/id_rsa
