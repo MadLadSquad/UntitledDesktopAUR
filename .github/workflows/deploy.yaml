@@ -20,21 +20,15 @@ jobs:
           useradd -m builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown -R builder $(pwd)
-      - uses: webfactory/ssh-agent@v0.9.1
-        with:
-          ssh-private-key: ${{ secrets.ACTIONS_AUR_SSH_KEY }}
       - name: Configure git
         run: |
-          sudo -E -u builder env HOME=/home/builder git config --global user.name "Madman10K"
-          sudo -E -u builder env HOME=/home/builder git config --global user.email "contact@madladsquad.com"
-          sudo -E -u builder env HOME=/home/builder git config --global init.defaultBranch main
-
-          sudo chown builder:builder $SSH_AUTH_SOCK
-          sudo chmod 600 $SSH_AUTH_SOCK
+          sudo -E -u builder mkdir -p /home/builder/.ssh
+          echo "${{ secrets.ACTIONS_AUR_SSH_KEY }}" | sudo -E -u builder tee /home/builder/.ssh/id_rsa > /dev/null
+          sudo -E -u builder chmod 600 /home/builder/.ssh/id_rsa
+          sudo -E -u builder ssh-keyscan -H aur.archlinux.org | sudo -E -u builder tee -a /home/builder/.ssh/known_hosts > /dev/null
           
-          sudo -E -u builder env HOME=/home/builder mkdir -p /home/builder/.ssh
-          sudo -E -u builder env HOME=/home/builder ssh-keyscan -H aur.archlinux.org >> /home/builder/.ssh/known_hosts
-          sudo -E -u builder env HOME=/home/builder SSH_AUTH_SOCK=${SSH_AUTH_SOCK} ssh-add -l || echo "No SSH keys available"
+          # Start a new SSH agent for builder
+          sudo -E -u builder bash -c 'eval $(ssh-agent -s) && ssh-add /home/builder/.ssh/id_rsa && ssh-add -l'
 
 # sudo -E -u builder env HOME=/home/builder chmod -R 600 /home/builder/.ssh/*
       - name: Debug SSH Access
