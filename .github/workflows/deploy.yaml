@@ -17,8 +17,6 @@ jobs:
           pacman -S --noconfirm git base-devel sudo xorg-xrandr openssh
           pacman --noconfirm --ask=4 -S iptables-nft
 
-          systemctl start sshd.service
-
           useradd -m builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown -R builder $(pwd)
