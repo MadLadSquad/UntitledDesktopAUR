@@ -11,6 +11,10 @@ compile_file() {
 	echo -e "\x1b[32mCompiling: $1\x1b[0m"
 	echo -e "\x1b[32m--------------------------------\x1b[0m"
 
+	sed -i "s/sha256sums=(.*/sha256sums=()/g" PKGBUILD
+	sha=$(makepkg -g)
+        sed -i "s/sha256sums=()/${sha}/g" PKGBUILD
+ 
 	makepkg -si --noconfirm || exit
 	makepkg --printsrcinfo > .SRCINFO || exit
 	cd ../ || exit
