@@ -25,12 +25,12 @@ jobs:
           ssh-private-key: ${{ secrets.ACTIONS_AUR_SSH_KEY }}
       - name: Configure git
         run: |
-          sudo -E -u builder bash -c "HOME=/home/builder git config --global user.name Madman10K"
-          sudo -E -u builder bash -c "HOME=/home/builder git config --global user.email contact@madladsquad.com"
-          sudo -E -u builder bash -c "HOME=/home/builder git config --global init.defaultBranch main"
+          sudo -E -u builder env HOME=/home/builder git config --global user.name "Madman10K"
+          sudo -E -u builder env HOME=/home/builder git config --global user.email "contact@madladsquad.com"
+          sudo -E -u builder env HOME=/home/builder git config --global init.defaultBranch main"
           
-          sudo -E -u builder bash -c "HOME=/home/builder mkdir -p ~/.ssh" || exit
-          sudo -E -u builder bash -c "HOME=/home/builder ssh-keyscan -H aur.archlinux.org >> ~/.ssh/known_hosts" || exit
-          sudo -E -u builder bash -c "HOME=/home/builder chmod 600 ~/.ssh/*" || exit
+          sudo -E -u builder env HOME=/home/builder mkdir -p /home/builder/.ssh
+          sudo -E -u builder env HOME=/home/builder ssh-keyscan -H aur.archlinux.org >> /home/builder/.ssh/known_hosts
+          sudo -E -u builder env HOME=/home/builder chmod 600 /home/builder/.ssh/known_host
       - name: Compile
         run: sudo -E -u builder bash -c "HOME=/home/builder ./run.sh deploy"
