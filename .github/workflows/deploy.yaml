@@ -13,8 +13,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Update repositories and install essentials
         run: |
-          sudo pacman -Syyu --noconfirm
-          sudo pacman -S git basedevel
+          pacman -Syyu --noconfirm
+          pacman -S git basedevel
       - name: UntitledI18N
         run: |
           cd untitled-i18n/ || exit
