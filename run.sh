@@ -41,12 +41,12 @@ export -f compile_file
 
 compile_file untitled-i18n "$1"
 compile_file untitled-open "$1"
-compile_file untitled-xdg-basedir $1
-compile_file untitled-exec $1
-compile_file untitled-cli-parser $1
-compile_file untitled-dbus-utils $1
+compile_file untitled-xdg-basedir "$1"
+compile_file untitled-exec "$1"
+compile_file untitled-cli-parser "$1"
+compile_file untitled-dbus-utils "$1"
 
-compile_file untitled-imgui-framework $1
-compile_file ude-session-logout $1
-compile_file untitled-game-system-manager $1
-compile_file untitled-ibus-handwriting $1
+compile_file untitled-imgui-framework "$1"
+compile_file ude-session-logout "$1"
+compile_file untitled-game-system-manager "$1"
+compile_file untitled-ibus-handwriting "$1"
