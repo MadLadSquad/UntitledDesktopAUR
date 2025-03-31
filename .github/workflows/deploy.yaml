@@ -22,5 +22,5 @@ jobs:
       - name: UntitledI18N
         run: |
           cd untitled-i18n/ || exit
-          sed -i "s/sha256sums=.*/$(makepkg -g)/g" PKGBUILD || exit
           su builder -c "makepkg -si --noconfirm || exit" || exit
+#           sed -i "s/sha256sums=.*/$(makepkg -g)/g" PKGBUILD || exit
