@@ -1,0 +1,26 @@
+pkgbase = untitled-game-system-manager
+	pkgdesc = A manager for containerised Linux gaming systems
+	pkgver = 2.7.0.1
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledGameSystemManager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = untitled-imgui-framework
+	makedepends = go
+	makedepends = incus
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	depends = untitled-imgui-framework
+	depends = incus
+	depends = xorg-xhost
+	provides = libUntitledGameSystemManagerLib.so
+	provides = UntitledGameSystemManager
+	source = https://github.com/MadLadSquad/UntitledGameSystemManager/releases/download/v2.7.0.1/untitled-game-system-manager-2.7.0.1.tar.xz
+	sha256sums = 637eb1ed795ff62b1af9e693352ce206002acb39a27e67ec24f729bfd009d8bb
+
+pkgname = untitled-game-system-manager

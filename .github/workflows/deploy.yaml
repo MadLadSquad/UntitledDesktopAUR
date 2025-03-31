@@ -1,0 +1,22 @@
+name: Arch Linux
+on:
+  push:
+    branches: [master]
+jobs:
+  arch:
+    runs-on: ubuntu-latest
+    container: archlinux
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update repositories and install essentials
+        uses: |
+          sudo pacman -Syyu --noconfirm
+          sudo pacman -S git basedevel
+      - name: UntitledI18N
+        uses: |
+          cd untitled-i18n/ || exit
+          sed -i "s/sha256sums=.*/$(makepkg -g)/g" PKGBUILD || exit
+          makepkg -si --noconfirm || exit

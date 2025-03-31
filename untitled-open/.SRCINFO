@@ -1,0 +1,23 @@
+pkgbase = untitled-open
+	pkgdesc = Cross-platform C/C++ library for opening links and file pickers natively
+	pkgver = 2.6.0.2
+	pkgrel = 1
+	url = https://github.com/MadLadSquad/UntitledOpen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = dbus
+	makedepends = xdg-desktop-portal
+	depends = gcc-libs
+	depends = glibc
+	depends = pkgconf
+	depends = dbus
+	depends = xdg-desktop-portal
+	provides = libUntitledOpen.so
+	source = https://github.com/MadLadSquad/UntitledOpen/releases/download/v2.6.0.2/untitled-open-2.6.0.2.tar.xz
+	sha256sums = a51b77d921f9f7a338d64bfdf873173b59fa861c65c78f06e242a456d2d82f38
+
+pkgname = untitled-open
