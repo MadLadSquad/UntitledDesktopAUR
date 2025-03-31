@@ -14,18 +14,22 @@ jobs:
       - name: Update repositories and install essentials
         run: |
           pacman -Syyu --noconfirm
-          pacman -S --noconfirm git base-devel sudo xorg-xrandr
+          pacman -S --noconfirm git base-devel sudo xorg-xrandr openssh
           pacman --noconfirm --ask=4 -S iptables-nft
+
+          systemctl start sshd.service
 
           useradd -m builder
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown -R builder $(pwd)
+      - uses: webfactory/ssh-agent@v0.9
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_AUR_SSH_KEY }}
       - name: Configure git
         run: |
           git config --global user.name "Madman10K"
           git config --global user.email "contact@madladsquad.com"
           su builder -c "mkdir -p ~/.ssh" || exit
-          su builder -c "echo ${{ secrets.ACTIONS_AUR_SSH_KEY }}> ~/.ssh/id_ed25519" || exit
           su builder -c "ssh-keyscan -H aur.archlinux.org >> ~/.ssh/known_hosts" || exit
       - name: Compile
         run: su builder -c "./run.sh"
