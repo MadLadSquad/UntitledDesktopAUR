@@ -30,4 +30,4 @@ jobs:
           su builder -c "mkdir -p ~/.ssh" || exit
           su builder -c "ssh-keyscan -H aur.archlinux.org >> ~/.ssh/known_hosts" || exit
       - name: Compile
-        run: su builder -c "./run.sh"
+        run: su builder -c "./run.sh deploy"
