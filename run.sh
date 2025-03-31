@@ -8,11 +8,11 @@ fi
 compile_file() {
 	cd "$1" || exit
 	echo -e "\x1b[32m--------------------------------\x1b[0m"
-	echo "Compiling: $1"
+	echo -e "\x1b[32mCompiling: $1\x1b[0m"
 	echo -e "\x1b[32m--------------------------------\x1b[0m"
 
 	makepkg -si --noconfirm || exit
-	makepkg --print-srcinfo || exit
+	makepkg --printsrcinfo > .SRCINFO || exit
 	cd ../ || exit
 
 	echo -e "\x1b[32m--------------------------------\x1b[0m"
