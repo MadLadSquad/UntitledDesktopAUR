@@ -14,9 +14,13 @@ jobs:
       - name: Update repositories and install essentials
         run: |
           pacman -Syyu --noconfirm
-          pacman -S --noconfirm git base-devel
+          pacman -S --noconfirm git base-devel sudo
+
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown -R builder $(pwd)
       - name: UntitledI18N
         run: |
           cd untitled-i18n/ || exit
           sed -i "s/sha256sums=.*/$(makepkg -g)/g" PKGBUILD || exit
-          makepkg -si --noconfirm || exit
+          su builder -c "makepkg -si --noconfirm || exit" || exit
