@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledOpen"
 
 pkgname=untitled-open
-pkgver=2.6.0.2
+pkgver=2.6.1.0
 pkgrel=1
 pkgdesc="Cross-platform C/C++ library for opening links and file pickers natively"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
