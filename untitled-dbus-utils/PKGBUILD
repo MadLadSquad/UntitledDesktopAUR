@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledDBusUtils"
 
 pkgname=untitled-dbus-utils
-pkgver=1.4.0.1
+pkgver=2.0.0.0
 pkgrel=1
 pkgdesc="C++ utilities for dealing with the low level DBus C API"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
