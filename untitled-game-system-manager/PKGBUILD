@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledGameSystemManager"
 
 pkgname=untitled-game-system-manager
-pkgver=2.7.0.1
+pkgver=2.8.0.0
 pkgrel=1
 pkgdesc="A manager for containerised Linux gaming systems"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
