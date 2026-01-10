@@ -23,7 +23,7 @@ build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
 
 	cd $nsrcdir || exit
-	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild.cpp
+	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild/CMake.cpp
 	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/CMakeLists.txt
 	./install.sh ci || exit
 	./create-project.sh pkg --skip-compilation || exit
