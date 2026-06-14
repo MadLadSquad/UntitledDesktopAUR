@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledXDGBasedir"
 
 pkgname=untitled-xdg-basedir
-pkgver=5.0.0.1
+pkgver=5.2.0.0
 pkgrel=1
 pkgdesc="C/C++ implementation of the XDG basedir specification"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
